@@ -1,0 +1,31 @@
+<template>
+<div>
+  <h2>我是用户界面</h2>
+  <p>我是超级VIP用户嘿嘿嘿</p>
+  <p>{{userId}}</p>
+  <p>{{$route.params.userId}}</p>
+  <button @click="btnClick">按钮</button>
+</div>
+</template>
+
+<script>
+export default {
+  name: "User",
+  computed:{
+    userId(){
+      return this.$route.params.userId
+    }
+  },
+  methods:{
+    btnClick(){
+      //所有的组件都继承自Vue类的原型
+      // console.log(this.$router)
+      // console.log(this.$route)
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

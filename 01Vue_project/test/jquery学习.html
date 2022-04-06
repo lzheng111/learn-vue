@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>title</title>
+  <style>
+    .test2{
+      width: 130px;
+      height: 130px;
+      padding: 15px;
+      margin: 15px;
+      background-color:aquamarine;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h2 class="test">这是一个标题</h2>
+  <p class="test">这是一个段落。</p>
+  <p id="test">这是另一个段落。</p>
+  <a>单击就没啦嘿嘿哈哈</a>
+  <i>双击就没啦</i>
+  <div>
+    <a id="p1">莫咯魔力红，进来就报警嘿嘿嘿</a>
+  </div>
+
+  <div>
+    <a id="p2">离开我就报警了喔</a>
+  </div>
+
+  <div>
+    <a id="p3">我是个段落嘿嘿嘿，进来或者出去都会报警勒</a>
+  </div>
+
+ Name: <input type="text" name="fullname"> </br>
+
+  <div class="test2">
+    <p>隐藏及设置回调函数</p>
+  </div>
+
+  <button class="btn1">点我</button></br>
+  <button>按钮1</button></br>
+  <button class="btn2">隐藏</button></br>
+  <button class="btn3">显示/隐藏</button>
+
+</div>
+<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+<script>
+  $(function(){
+    $("button.btn1").click(function(){
+      $(".test").hide()
+    })
+  })
+  //单击a标签隐藏
+  $("a").click(function (){
+    $(this).hide()
+  })
+  //双击隐藏i标签
+  $("i").dblclick(function (){
+    $(this).hide()
+  })
+
+  $(document).ready(function (){
+    $("#p1").mouseenter(function (){
+      alert("您鼠标移到了id为p1的元素上")
+    })
+  })
+
+  $(function (){
+    $("#p2").mouseleave(function (){
+      alert("您鼠标离开了我")
+    })
+  })
+
+  $(function (){
+    $("#p3").hover(
+      function (){
+        alert("我进来咯")
+        },
+      function (){
+        alert("我出去啦")
+      }
+    )
+  })
+
+  $(function (){
+    //点击框变色
+   $("input").focus(function (){
+     $(this).css("background-color","#cccccc")
+   })
+    //点击款外变回白色
+    $("input").blur(function(){
+      $(this).css("background-color","#ffffff")
+    })
+  })
+     //隐藏（带效果）
+  $(function (){
+    $(".btn2").click(function (){
+      $(".test2").hide(1000,"linear",function (){
+        alert("Hide（）方法已经完成！")
+      })
+    })
+  })
+   //隐藏和显示
+  $(function (){
+    $(".btn3").click(function (){
+      $(".test").toggle()
+    })
+  })
+
+
+
+</script>
+</body>
+</html>

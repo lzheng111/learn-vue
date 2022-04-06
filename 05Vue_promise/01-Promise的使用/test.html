@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // new Promise((resolve,reject) => {
+  //   setTimeout(() => {
+  //     resolve ('lzh')
+  //   },2000)
+  // }).then(res =>{
+  //   console.log(res ,'写了十行代码处理res');
+  //   return res + '111'
+  // }).then(res => {
+  //   console.log(res,'我又处理了res+111');
+  //   return res + '222'
+  //   //throw 'err message'
+  // }).then(res => {
+  //   console.log(res,'最后处理res+222');
+  //   return res + '终于处理完了'
+  // }).catch(err => {
+  //   console.log(err);
+  // })
+
+  Promise.all([
+      new Promise((resolve,reject) => {
+        setTimeout(() => {
+          resolve('lzhhhh')
+        },2000)
+      }),
+      new Promise((resolve,reject) => {
+        setTimeout(()=> {
+          resolve({name:'aaaa',age:18})
+        },1000)
+      })
+  ]).then(results => {
+    console.log(results);
+  })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+
+<script>
+
+
+
+
+  // 01、set ：不是一种数据类型，是一种数据结构；成员唯一
+  // let arr = [1,1,2,3,1,4,3,5,2];
+  // function unique(ary) {
+  //   let s  = new Set(ary);
+  //   return  Array.from(s)  // Array.from : 将set数据结构转成真正的数组；
+  // }
+  //   console.log(unique(arr))
+
+  // 2、indexof
+  // let arr = [1,1,2,3,1,4,3,5,2];
+  // function unique(ary) {
+  //   let newAry = [];
+  //   for(let i=0;i<ary.length;i++){
+  //     let  cur = ary[i];
+  //     if(newAry.indexOf(cur)===-1){
+  //       newAry.push(cur);
+  //     }
+  //   }
+  //   return newAry;
+  // }
+  // console.log(unique(arr));
+
+   // 3、sort
+  // let arr = [1,1,2,3,1,4,3,5,2];
+  // function unique(ary) {
+  //   let a = ary.sort(function (a,b) {
+  //     return a-b;
+  //   });
+  //   for(let i=0;i<a.length;i++){
+  //     if(a[i]===a[i+1]){
+  //       a.splice(i+1,1);
+  //       i--;
+  //     }
+  //   }
+  //   return a;
+  // }
+  // console.log(unique(arr));
+
+  // 4、类似于方法一的set，用了剩余运算符…
+  // let  arr = [1,1,2,3,1,4,3,5,2];
+  // let a = [...new Set(arr)];
+  // console.log(a);
+
+  // 05、filter+indexOf
+  // let arr = [1,1,2,3,1,4,3,5,2];
+  //   function unique(ary) {
+  //     return ary.filter(function (item,index,a) {
+  //     return ary.indexOf(item)===index;
+  //   })
+  // }
+  // console.log(unique(arr));
+
+
+</script>
+</body>
+</html>

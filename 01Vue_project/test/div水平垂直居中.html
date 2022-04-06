@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--第一种：让一个不定宽高的div在整个网页中水平垂直居中-->
+<div>
+  <h2>水平垂直居中 (我是没有宽高的div，靠内容撑开)</h2>
+</div>
+
+<!--第二种：让一个不定宽高的div在父盒子中垂直水平居中-->
+<!--  <div class="father">-->
+<!--    <div class="son">-->
+<!--      <h2>水平垂直居中（我没有宽高，被内容撑开）</h2>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</body>-->
+
+
+<!--  <button class="aaa">按钮</button>-->
+
+
+</body>
+<style scoped>
+
+/*//垂直居中*/
+/*.aaa{*/
+/*  height: 50px;*/
+/*  width: 50px;*/
+/*  display: inline;*/
+/*  background-color: red;*/
+/*  line-height:50px ;*/
+/*}*/
+
+  /*第一种：让一个不定宽高的div在整个网页中水平垂直居中*/
+  /*div{*/
+  /*  !*设置定位(绝对定位)*!*/
+  /*  position: absolute;*/
+  /*  !*x,y轴走网页的一半*!*/
+  /*  left: 50%;*/
+  /*  top: 50%;*/
+  /*  !*往回走自身x,y的一半*!*/
+  /*  transform: translate(-50%,-50%);*/
+  /*}*/
+
+  /*第二种：让一个不定宽高的div在父盒子中垂直水平居中*/
+
+
+  /*.father{*/
+  /*  !*父盒子是有宽高的*!*/
+  /*  width: 500px;*/
+  /*  height: 500px;*/
+  /*  !*添加flex属性*!*/
+  /*  display: flex;*/
+  /*  !*设置水平垂直居中*!*/
+  /*  justify-content: center;*/
+  /*  align-items: center;*/
+  /*  background-color: aquamarine;*/
+  /*}*/
+
+
+</style >
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color:red;
+    }
+    .clearfix:after{
+      content: '';
+      display: table;
+      clear: both;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div id = "app">
+<!--   动态绑定-->
+<!--  <h2 :class={active:isActive}>{{message}}</h2>-->
+<!--  <ul>-->
+<!--    <li v-for="(item,index) in movies"-->
+<!--        :class="{active:isIndex === index}"-->
+<!--        @click="btnIndex(index)">-->
+<!--      <h2>{{item}}</h2>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--  <button @click="btnClick">按钮</button>-->
+
+<!--  //双向绑定-->
+<!--  <input type="text" :value="message" @input.lazy="message = $event.target.value">-->
+<!--  {{message}}-->
+<!--  <input type="text" v-model="message">-->
+
+<!--  <label for ="gg">-->
+<!--    <input type="radio" id="gg" value="男" v-model="sex">男-->
+<!--  </label>-->
+<!--  <label for ="mm">-->
+<!--    <input type="radio" id="mm" value="女" v-model="sex">女-->
+<!--  </label>-->
+
+<!--  <label for="aaa">-->
+<!--    <input type="checkbox" id="aaa"  v-model="isMessage">同意协议-->
+<!--  </label>-->
+<!--  <h2>{{isMessage}}</h2>-->
+<!--  <button :disabled=" !isMessage">下一步</button>-->
+
+<!--  <label >-->
+<!--    <input type="checkbox" value="篮球" v-model="hobbies">篮球-->
+<!--    <input type="checkbox" value="足球" v-model="hobbies">足球-->
+<!--    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球-->
+<!--    <input type="checkbox" value="网球" v-model="hobbies">网球-->
+<!--  </label>-->
+<!--  <h2>我的爱好是：{{hobbies}}</h2>-->
+
+<!--  <select v-model="fruit">-->
+<!--    <option value="苹果" >苹果</option>-->
+<!--    <option value="榴莲" >榴莲</option>-->
+<!--    <option value="香蕉" >香蕉</option>-->
+<!--    <option value="草莓" >草莓</option>-->
+<!--  </select>-->
+<!--  <h2>我喜欢的水果：{{fruit}}</h2>-->
+
+<!--  <label v-for="item in fruits">-->
+<!--    <input type="checkbox":value="item" v-model="hobbies">{{item}}-->
+<!--  </label>-->
+<!--     <h2>我喜欢的水果是：{{hobbies}}</h2>-->
+
+<!--  组件间通信-->
+<!--  父传子-->
+<!--  <cpn :cmessage="message" :cfruits="fruits"></cpn>-->
+
+<!--  子传父-->
+<!--  <cpn @item-click="btn2Click" ref="aaa"></cpn>-->
+<!--  {{message}}-->
+
+<!--  <button @click="reftClick">父访问子</button>-->
+
+  <cpn>
+    <h2 slot="aaa">嘿嘿嘿</h2>
+    <button slot="bbb">插槽按钮</button>
+  </cpn>
+</div>
+<!--//父传子-->
+<!--<template id="cpn">-->
+<!--  <div>-->
+<!--    <h2>{{test}}</h2>-->
+<!--    <p>{{cmessage}}</p>-->
+<!--    <h2>{{cfruits}}</h2>-->
+<!--  </div>-->
+<!--</template>-->
+
+<!--子传父-->
+<!--<template id="cpn">-->
+<!--  <div>-->
+<!--    <button v-for="item in test" @click="cpnClick(item)">{{item.name}}</button>-->
+<!--  </div>-->
+<!--</template>-->
+
+<!--具名插槽-->
+<template id="cpn">
+  <div>
+    <slot name="aaa"><h2>我是具名插槽</h2></slot>
+    <slot name="bbb"><button>按钮</button></slot>
+    <slot name="ccc"><span>林忠恒</span></slot>
+  </div>
+
+</template>
+
+<script src = "../js/vue.js"></script>
+<script>
+
+  const cpn = {
+    template:'#cpn',
+    data(){
+      return{
+        test:[
+          {id:'aaa',name:'电影'},
+          {id:'bbb',name:'电视剧'},
+          {id:'ccc',name:'综艺'},
+          {id:'ddd',name:'直播'}
+        ],
+        cpnmessage:'lzh'
+      }
+    },
+    methods:{
+      cpnClick(item) {
+         this.$emit('item-click',item)
+        console.log(this.$parent.fruit);
+      }
+    }
+    // props:{
+    //   cmessage:{
+    //     type:String,
+    //     default:'aaa'
+    //   },
+    //   cfruits:{
+    //     type: Array,
+    //     default(){
+    //       return []
+    //     }
+    //   }
+    // },
+
+  }
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      movies:['aaa','bbb','ccc','dddd'],
+      isActive: true,
+      isIndex: 0,
+      sex:'男',
+      isMessage:false,
+      hobbies:[],
+      fruit:'苹果',
+      fruits:['琵琶','火龙果','圣女果','椰子']
+        },
+    methods: {
+      btnClick(){
+        this.isActive = !this.isActive
+      },
+      btnIndex(index){
+        this.isIndex = index
+      },
+      btn2Click(item){
+        this.message = item.name
+      },
+      reftClick(){
+        console.log(this.$refs.aaa.test);
+      }
+
+    },
+    components:{
+      cpn
+    }
+  })
+</script>
+</body>
+</html>

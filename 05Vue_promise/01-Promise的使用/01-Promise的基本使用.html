@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //1.使用setTimeout
+  // setTimeout(() =>{
+  //   console.log(('hello lzh'));
+  // },1000)
+
+  //参数 -》函数(resolve,reject)
+  // resolve,reject本身又是函数
+  //链式编程
+  // new Promise((resolve,reject) =>{
+  //   //第一次网络请求代码
+  //   setTimeout(() =>{
+  //     resolve()
+  //     },1000)
+  // }).then(() =>{
+  //   //第一次网络处理代码
+  //   console.log('hello lzh');
+  //   console.log('hello lzh');
+  //
+  //   return new Promise((resolve,reject) =>{
+  //     //第二次网络请求代码
+  //     setTimeout(() =>{
+  //       resolve()
+  //     },1000)
+  //   }).then(() =>{
+  //     //第二次网络处理代码
+  //     console.log('hello vuejs');
+  //     console.log('hello vuejs');
+  //
+  //     return new Promise((resolve,reject) =>{
+  //       //第三次网络请求代码
+  //       setTimeout(() =>{
+  //         resolve()
+  //       },1000)
+  //     }).then(() =>{
+  //       //第三次网络处理代码
+  //       console.log('hello world');
+  //       console.log('hello world');
+  //     })
+  //   })
+  // })
+
+  //什么情况会用promise
+  // 一般情况式有异步操作时，使用promise对这个异步进行封装
+  // new -> 构造函数（1.保存一些状态信息 2.执行传入函数）
+  //在执行传入的回调函数时，会传入两个参数，resolve，reject，本身又是函数
+  new Promise((resolve,reject) => {
+    setTimeout(() => {
+      //1.成功的时候
+      // resolve('hello lzh')
+      //2.失败的时候
+      reject('error message')
+    },1000)
+  }).then((data) => {
+    //1.处理代码
+    console.log(data);
+    console.log(data);
+    console.log(data);
+  }).catch((err => {
+    console.log(err);
+  }))
+
+</script>
+</body>
+</html>
